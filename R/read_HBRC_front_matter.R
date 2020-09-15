@@ -12,7 +12,7 @@ read_HBRC_front_matter <- function(filepath = here("1-received_data/1-example_HB
                                    frontsheet = 1,
                                    returnConditionDetailed = FALSE){
 
-  allfront <- suppressMessages(read_excel(path = filepath,
+  allfront <- suppressMessages(readxl::read_excel(path = filepath,
                                           sheet = frontsheet, skip = 1, col_names = FALSE))
 
   # get wetland ID
@@ -42,7 +42,7 @@ read_HBRC_front_matter <- function(filepath = here("1-received_data/1-example_HB
     stop("apparently no plots sampled please double check")
   }
 
-  wetlandClasses <- row_to_names(data.frame(allfront[6:7, 1:4]),
+  wetlandClasses <- janitor::row_to_names(data.frame(allfront[6:7, 1:4]),
                                  row_number = 1)
   stopifnot("problem with wetland classes" = names(wetlandClasses) == c(
     "Classification: I System", "IA Subsystem", "II Wetland Class",
@@ -56,7 +56,7 @@ read_HBRC_front_matter <- function(filepath = here("1-received_data/1-example_HB
   wetlandFieldTeam <- allfront[[2]][which(allfront[[1]] == "Field team:")]
 
   wetlandCondition <- allfront[10:25, 1:4] %>%
-    row_to_names(row_number = 1) %>%
+    janitor::row_to_names(row_number = 1) %>%
     tidyr::fill(Indicator) %>%
     rename(WCI_Inividual_Score = "Score 0– 51") %>%
     mutate(WCI_Inividual_Score = as.numeric(WCI_Inividual_Score))
@@ -89,7 +89,7 @@ read_HBRC_front_matter <- function(filepath = here("1-received_data/1-example_HB
   wpStart <- which(allfront[[1]] == "Pressure")
   wpEnd <- grep("Wetland isolation", allfront[[1]], fixed = TRUE)
   wetlandPressures <- allfront[wpStart:wpEnd, 1:3] %>%
-    row_to_names(row_number = 1) %>%
+    janitor::row_to_names(row_number = 1) %>%
     rename(PressureScore = Score2) %>%
     mutate(PressureScore = as.numeric(PressureScore))
 
