@@ -1,0 +1,17 @@
+Package: cleanerWetlands
+Title: Cleans Up Wetland Data
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Olivia",
+           family = "Burge",
+           role = c("aut", "cre"),
+           email = "burgeo@landcareresearch.co.nz",
+           comment = c(ORCID = "https://orcid.org/0000-0001-7719-6695"))
+Description: This package is used for cleaning up NZ wetland database data
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Imports: 
+    magrittr
