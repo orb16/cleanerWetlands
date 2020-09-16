@@ -5,7 +5,7 @@
 \title{Read in wetland-level metadata from HBRC files}
 \usage{
 read_HBRC_front_matter(
-  filepath = here("1-received_data/1-example_HBRC_data/Arohiwi Wetland 20200218.xlsx"),
+  filepath,
   frontsheet = 1,
   returnConditionDetailed = FALSE
 )
@@ -22,9 +22,4 @@ Simple metadatatable (unless a detailed version is required)
 }
 \description{
 Read in wetland-level metadata from HBRC files
-}
-\examples{
-read_HBRC_front_matter(here("1-received_data/1-example_HBRC_data/Arohiwi Wetland 20200218.xlsx"), frontsheet = 1, )
-
-
 }
